@@ -12,7 +12,7 @@ export default function Cartpage(){
         <h3>Number of IceCreams:{ice}</h3>
         <h3>Number of Chocolates :{choco}</h3>
         <h3>Number of Gifts :{gift}</h3>
-
+        <h3> num of plants</h3>
         </>
 
     )
