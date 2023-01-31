@@ -8,6 +8,7 @@ import IMSNavbar from './components/IMSNavbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Cakes from './pages/Cakes';
 import Icecreams from './pages/Icecreams';
+import Landingpage from './pages/Landingpage';
 
 import Flowers from './pages/Flowers';
 import Gifts from './pages/Gifts';
@@ -30,6 +31,7 @@ function App() {
       <Route path='/Flowers' element={<Flowers/>}></Route>
       <Route path='/Gifts' element={<Gifts/>}></Route>
       <Route path='/Cartpage' element={<Cartpage/>}></Route>
+      <Route path='/' element={<Flowers/>}></Route>
 
      </Routes>
      </BrowserRouter>
