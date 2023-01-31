@@ -19,7 +19,7 @@ function App() {
   let s=['Profile', 'Account', 'Dashboard', 'Logout']
   let noOfCakes=useSelector((state)=>state.cake.numOfCakes);
   let ordercakes=useSelector((state)=>state.cake.ordercakes);
-  
+  console.log("someThing")
   return (
     <div className="App">
      <BrowserRouter>
