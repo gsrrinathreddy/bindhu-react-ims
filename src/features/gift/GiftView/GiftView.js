@@ -111,6 +111,7 @@ export default function GiftView(){
                              rating={item.rating}   
                              sellingstatus={item.sellingstatus} 
                              ordername={ordername}  
+                             order={ordered}
                 ></IMSCard>
                 </Grid>
             )

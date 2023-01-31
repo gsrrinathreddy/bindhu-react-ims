@@ -2,22 +2,33 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState={
 noOfIcecreams:20,
-ordericecream:0
+ordericecream:0,
+    icecreamList:{
+        qty:0,
+        name:null,
+        actualPrice:null,
+        discountedPrice:null
+    }
 }
 
 const IceCreamSlice =createSlice({
 name:'icecream',
 initialState,
 reducers:{
-    orderedicecream:(state,action)=>{
+    ordered:(state,action)=>{
         if(state.noOfIcecreams<action.payload){
             console.log('Out of stock')}
             else{
-        state.noOfIcecreams-=action.payload;
-        state.ordericecream+=(action.payload)
+        state.noOfIcecreams-=action.payload.qty;
+        state.ordericecream+=parseInt(action.payload.qty)
+
+        state.icecreamList.actualPrice=action.payload.actualPrice;
+        state.icecreamList.discountedPrice=action.payload.discountPrice;
+        state.icecreamList.name=action.payload.name;
+        state.icecreamList.qty=action.payload.qty;
     }
     },
-    restockedicecream:(state,action)=>{
+    restocked:(state,action)=>{
         state.noOfIcecreams+=action.payload
     }
 },
@@ -30,4 +41,4 @@ extraReducers:{
 }
 })
 export default IceCreamSlice.reducer;
-export const {orderedicecream,restockedicecream}=IceCreamSlice.actions;
+export const {ordered,restocked}=IceCreamSlice.actions;

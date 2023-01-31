@@ -7,12 +7,13 @@ const initialState={
         qty:0,
         name:null,
         actualPrice:null,
-        discountedPrice:null
+        discountedPrice:null,
+    
     }
 }
 
 const cakeSlice=createSlice({
-    name:'Cake',
+    name:'cake',
     initialState,
     reducers:{
         ordered:(state,action)=>{
@@ -23,10 +24,10 @@ const cakeSlice=createSlice({
             state.numOfCakes-=action.payload.qty;
             state.ordercakes+=parseInt(action.payload.qty);
 
-            state.cakeArray.qty=action.payload.qty;
-            state.cakeArray.name=action.payload.name;
-            state.cakeArray.actualPrice=action.payload.actualPrice;
-            state.cakeArray.discountedPrice=action.payload.discountPrice;
+             state.cakeArray.qty=action.payload.qty;
+             state.cakeArray.name=action.payload.name;
+             state.cakeArray.actualPrice=action.payload.actualPrice;
+             state.cakeArray.discountedPrice=action.payload.discountPrice;
             }
         },
         restocked:(state,action)=>{

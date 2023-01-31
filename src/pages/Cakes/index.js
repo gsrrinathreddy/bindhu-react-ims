@@ -1,3 +1,4 @@
+import { Box } from "@mui/system";
 import { useSelector } from "react-redux"
 import CakeView from "../../features/cake/CakeView"
 
@@ -12,8 +13,11 @@ export default function Cakes(){
 
         </center> */} 
        {/* <h3> Cakes <IMSCart badgeContent={orders}></IMSCart></h3> */}
-         
-        <CakeView ></CakeView> 
+        <Box sx={{margin:"40px"}}>
+        <CakeView >
+        </CakeView> 
+        </Box> 
+      
         
         </>
     )

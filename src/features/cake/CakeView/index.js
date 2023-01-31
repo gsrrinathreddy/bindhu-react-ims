@@ -201,7 +201,7 @@ let ordername='Cake'
             {
                 cakeList.map(item=>{
                     return(
-                        <Grid item display='flex' justifyContent='center' xs={4} sm={4} md={4} pt={4} >
+                        <Grid item display='flex' justifyContent='center' xs={5} sm={4} md={4} pt={4} >
                             
                         <IMSCard title={item.title}
                                  photo={item.photo}
@@ -210,6 +210,7 @@ let ordername='Cake'
                                  rating={item.rating}
                                  sellingstatus={item.sellingstatus}
                                 ordername={ordername}
+                                order = {ordered}
                                  
                         ></IMSCard>
                         </Grid>

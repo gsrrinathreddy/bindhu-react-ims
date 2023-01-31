@@ -128,6 +128,7 @@ export default function ChocolateView(){
                              rating={item.rating}  
                              ordername={ordername} 
                              sellingstatus={item.sellingstatus}
+                             order={ordered}
                              ></IMSCard>
                              </Grid>
                 

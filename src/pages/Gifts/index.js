@@ -3,7 +3,7 @@ import GiftView from "../../features/gift/GiftView/GiftView";
 import IMSCart from "../../components/IMSCart";
 
 export default function Gifts(){
-   let pqr=useSelector((state)=>state.gift.orderGift)
+
     return(
         <>
         <h2>Best gifts for Loved one</h2>

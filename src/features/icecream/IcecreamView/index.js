@@ -1,10 +1,10 @@
 import {Button}from'@mui/material';
-import { orderedicecream,restockedicecream } from '../IceCreamSlice';
+
 import {useDispatch,useSelector} from 'react-redux'
 import {Grid} from "@mui/material";
 import IMSCard from "../../../components/IMSCard"
 import {Box} from "@mui/material";
-
+import {ordered} from '../IceCreamSlice'
 import Blackforest_icecream from '../../../Assets/icecream/Blackforest_icecream.jpg';
 import browine from '../../../Assets/icecream/brownie.jpg';
 import butterscotch from '../../../Assets/icecream/butterscotch.jpg'
@@ -99,7 +99,7 @@ export default function IcecreamView(){
         
     }
  ]
- let ordername='icecream'
+ let ordername='Icecream'
  // const dispatch=useDispatch();
     // const numOfIcecreams=useSelector((state)=>state.icecream.noOfIcecreams);
     // const iic=1
@@ -120,6 +120,7 @@ export default function IcecreamView(){
                              rating={item.rating}  
                              sellingstatus={item.sellingstatus}
                              ordername={ordername}    
+                             order = {ordered}
                 ></IMSCard>
                 </Grid>
             )

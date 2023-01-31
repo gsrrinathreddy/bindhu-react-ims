@@ -20,12 +20,13 @@ import { useSelector } from 'react-redux';
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function IMSNavbar(props) {
-    let CakesOrder1=useSelector((state)=>state.cake.ordercakes)
-    let IceCreamsOrder1=useSelector((state)=>state.icecream.ordericecream)
-    let GiftOrder1=useSelector((state)=>state.gift.orderGift)
-    let Chocolate=useSelector((state)=>state.chocolate.orderChocolates)
-    let flower1=useSelector((state)=>state.flower.orderflowers)
-    let sum=CakesOrder1+IceCreamsOrder1+GiftOrder1+Chocolate+flower1;
+  const ord1=useSelector((state)=>state.cake.ordercakes)
+  const ord2=useSelector((state)=>state.icecream.ordericecream)
+  const ord3=useSelector((state)=>state.chocolate.orderChocolates)
+  const ord4=useSelector((state)=>state.flower.orderFlowers)
+  const ord5=useSelector((state)=>state.gift.orderGift)
+  let sum=ord1+ord2+ord3+ord4+ord5
+  
     let pages=props.pages;
     let settings=props.settings
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -100,11 +101,14 @@ function IMSNavbar(props) {
               }}
             >
               {pages.map((page) => (
+                <Link to ={page} style={{textDecoration:'none'}}>
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
+                </Link>
               ))}
             </Menu>
+
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
@@ -127,7 +131,7 @@ function IMSNavbar(props) {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-                <Link to ={page}>
+                <Link to ={page} style={{textDecoration:'none'}}>
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -141,7 +145,7 @@ function IMSNavbar(props) {
           {/* sx={{backgroundColor:'indigo' ,marginRight:'10px'}} */}
              <Box sx={{marginRight:'10px'}}>
               <Link to='Cartpage'>
-                <IMSCart badgeContent={sum}></IMSCart>
+                <IMSCart Content={sum}></IMSCart>
                 </Link>
              </Box>
              <br></br>

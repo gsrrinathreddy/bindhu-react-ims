@@ -5,13 +5,15 @@ import icecreamReducer from '../features/icecream/IceCreamSlice';
 import chocolateReducer from '../features/chocolate/chocolateSlice';
 import giftReducer from '../features/gift/GiftSlice';
 import flowerReducer from '../features/flower/flowerSlice';
+import cartReducer from '../features/cart/cartSlice';
 const store=configureStore({
     reducer:{
         cake:cakeReducer,
         icecream:icecreamReducer,
         chocolate:chocolateReducer,
         gift:giftReducer,
-        flower:flowerReducer
+        flower:flowerReducer,
+        cart:cartReducer
     },
     middleware:getDefaultMiddleware=>getDefaultMiddleware().concat(logger)
 })

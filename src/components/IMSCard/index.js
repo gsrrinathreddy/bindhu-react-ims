@@ -56,7 +56,7 @@ export default function IMSCard(props) {
   let discount=actualPrice-discountPrice;
   let discountedPercentage=Math.floor((discount/actualPrice)*100);
   let dpoff=discountedPercentage+"% off ";
-
+  let orderPlaced = props.order;
 
    
   const [expanded, setExpanded] = React.useState(false);
@@ -132,28 +132,21 @@ export default function IMSCard(props) {
       </CardContent>
        
       <CardActions disableSpacing>
-      <TextField id="outlined-basic" label="Quantity" variant="outlined" defaultValue={0} onChange={(e)=>setQty(e.currentTarget.value)} />
+      <TextField id="outlined-basic" label="Quantity" variant="outlined" defaultValue={1} onChange={(e)=>setQty(e.currentTarget.value)} />
       <Box>
        
        
-        <Button onClick={()=>{
-          if(ordername=='Cake'){
-            dispatch(cakeordered(params))
-          }else if(ordername=='icecream'){
-            dispatch(icecreamorder(params))
-          }else if (ordername=='Chocolate'){
-            dispatch(chocolateorder(qty))
-          }else if(ordername=='Flower'){
-            dispatch(flowersorder(qty))
-          }else if(ordername=='Gift')
-            dispatch(giftorder(qty))
-        }}>Add</Button></Box>
+        <Button onClick={()=> dispatch(orderPlaced(params))}>  
+             Add
+        </Button>
+        
+        </Box>
 
         {/* <IconButton aria-label="add to favorites" >
           <FavoriteIcon />
         </IconButton> */}
 
-        <IMSCart badgeContent={qty} ></IMSCart>
+        <IMSCart Content={qty} ></IMSCart>
 
         <IconButton aria-label="share">
           <ShareIcon />

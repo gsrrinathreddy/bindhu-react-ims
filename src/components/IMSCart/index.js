@@ -14,10 +14,12 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function IMSCart(props) {
-    let badgeContent=props.badgeContent
+
+    let Content=props.Content
+    
   return (
     <IconButton aria-label="cart">
-      <StyledBadge badgeContent={badgeContent} color="secondary">
+      <StyledBadge  badgeContent={Content} color="secondary">
         <ShoppingCartIcon />
       </StyledBadge>
     </IconButton>

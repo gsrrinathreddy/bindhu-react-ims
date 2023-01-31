@@ -6,7 +6,7 @@ const initialState={
 }
 
 const flowerSlice=createSlice({
-    name:'Flower',
+    name:'flower',
     initialState,
     reducers:{
         ordered:(state,action)=>{
@@ -14,8 +14,8 @@ const flowerSlice=createSlice({
                 console.log('Out of stock')
             }
             else{
-            state.numOfFlowers-=action.payload;
-            state.orderFlowers+=(action.payload);
+            state.numOfFlowers-=action.payload.qty;
+            state.orderFlowers+=parseInt(action.payload.qty);
         }
     },
         restocked:(state,action)=>{
