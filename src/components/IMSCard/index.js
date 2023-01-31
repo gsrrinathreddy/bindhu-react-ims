@@ -132,7 +132,7 @@ export default function IMSCard(props) {
       </CardContent>
        
       <CardActions disableSpacing>
-      <TextField id="outlined-basic" label="Quantity" variant="outlined" defaultValue={1} onChange={(e)=>setQty(e.currentTarget.value)} />
+      <TextField id="outlined-basic" label="Quantity" variant="outlined" defaultValue={0} onChange={(e)=>setQty(e.currentTarget.value)} />
       <Box>
        
        
