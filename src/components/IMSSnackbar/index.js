@@ -1,85 +1,49 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+import Slide from "@mui/material/Slide";
 
-export default function IMSSnackbar() {
-  const [state, setState] = React.useState({
-    open: false,
-    vertical: 'top',
-    horizontal: 'center',
-  });
-  const { vertical, horizontal, open } = state;
+function TransitionLeft(props) {
+  return <Slide {...props} direction="left" />;
+}
 
-  const handleClick = (newState) => () => {
-    setState({ open: true, ...newState });
+function TransitionUp(props) {
+  return <Slide {...props} direction="up" />;
+}
+
+function TransitionRight(props) {
+  return <Slide {...props} direction="right" />;
+}
+
+function TransitionDown(props) {
+  return <Slide {...props} direction="down" />;
+}
+
+export default function IMSSnackbar(props) {
+  let abc = props.abc;
+  let message = props.message;
+
+  const [open, setOpen] = React.useState(false);
+  const [transition, setTransition] = React.useState(undefined);
+
+  const handleClick = (Transition) => () => {
+    setTransition(() => Transition);
+    setOpen(true);
   };
 
   const handleClose = () => {
-    setState({ ...state, open: false });
+    setOpen(false);
   };
-
-  const buttons = (
-    <React.Fragment>
-      <Button
-        onClick={handleClick({
-          vertical: 'top',
-          horizontal: 'center',
-        })}
-      >
-        Top-Center
-      </Button>
-      <Button
-        onClick={handleClick({
-          vertical: 'top',
-          horizontal: 'right',
-        })}
-      >
-        Top-Right
-      </Button>
-      <Button
-        onClick={handleClick({
-          vertical: 'bottom',
-          horizontal: 'right',
-        })}
-      >
-        Bottom-Right
-      </Button>
-      <Button
-        onClick={handleClick({
-          vertical: 'bottom',
-          horizontal: 'center',
-        })}
-      >
-        Bottom-Center
-      </Button>
-      <Button
-        onClick={handleClick({
-          vertical: 'bottom',
-          horizontal: 'left',
-        })}
-      >
-        Bottom-Left
-      </Button>
-      <Button
-        onClick={handleClick({
-          vertical: 'top',
-          horizontal: 'left',
-        })}
-      >
-        Top-Left
-      </Button>
-    </React.Fragment>
-  );
 
   return (
     <div>
-      {buttons}
+      <Button onClick={handleClick(TransitionLeft)}>{abc}</Button>
       <Snackbar
-        anchorOrigin={{ vertical, horizontal }}
         open={open}
         onClose={handleClose}
-        message="I love snacks"
-        key={vertical + horizontal}
+        TransitionComponent={transition}
+        message={message}
+        key={transition ? transition.name : ""}
       />
     </div>
   );
