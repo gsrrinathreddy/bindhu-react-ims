@@ -11,14 +11,11 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
 import IMSCart from "../IMSCart";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@mui/material";
-import { orderedicecream as icecreamorder } from "../../features/icecream/IceCreamSlice";
-import { ordered as cakeordered } from "../../features/cake/cakeSlice";
-import { ordered as chocolateorder } from "../../features/chocolate/chocolateSlice";
-import { ordered as flowersorder } from "../../features/flower/flowerSlice";
-import { ordered as giftorder } from "../../features/gift/GiftSlice";
 import TextField from "@mui/material/TextField";
 import Rating from "@mui/material/Rating";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -30,6 +27,7 @@ import IMSSnackbar from "../IMSSnackbar";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
+
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
   transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
@@ -135,9 +133,9 @@ export default function IMSCard(props) {
           </Button>
         </Box>
         <IMSCart Content={qty}></IMSCart>
-        <IconButton aria-label="share">
+        <Button>
           <ShareIcon />
-        </IconButton>
+        </Button>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

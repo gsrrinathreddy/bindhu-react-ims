@@ -15,9 +15,6 @@ import lordkrishna from "../../../Assets/lordkrishna.jpg";
 import { Box } from "@mui/material";
 
 export default function GiftView() {
-  // const dispatch=useDispatch();
-  // const numofGifts=useSelector((state)=>state.gift.noOfGifts);
-  // const gift=1;
   const giftList = [
     {
       title: "Bullock Cart",
@@ -129,16 +126,4 @@ export default function GiftView() {
       </Box>
     </>
   );
-}
-
-{
-  /* <h3>Number Of Gifts: {(numofGifts<gift)?'Out Of Stock':numofGifts}</h3>
-    <Button onClick={()=>{
-        dispatch(ordered(1))
-    }}>
-        GIFTORDER</Button>
-    <Button onClick={()=>{
-        dispatch(restocked(1))
-    }}>
-        GIFTRESTOCKED</Button> */
 }

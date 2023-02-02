@@ -68,11 +68,10 @@ export default function Cart() {
             variant="text"
             onClick={() => navigate("/f")}
           >
-            {" "}
-            Go back to shopping{" "}
+            Go back to shopping
           </Button>
           <br></br>
-          <Button onClick={() => navigate("order-summary")}>Place Order</Button>
+          <Button onClick={() => navigate("/Delivery")}>Place Order</Button>
         </Grid>
       </Box>
     </>

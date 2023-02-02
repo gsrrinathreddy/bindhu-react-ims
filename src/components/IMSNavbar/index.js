@@ -15,6 +15,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 import IMSCart from "../IMSCart";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 // const pages = ['Cakes','Icecreams','Chocolates','Flowers','Gifts'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -46,7 +47,20 @@ function IMSNavbar(props) {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
+  const navLinkStyles = ({ isActive }) => {
+    return {
+      fontWeight: isActive ? "bold" : "normal",
+      textDecoration: "none",
+      textTransform: "none",
+      my: 2,
+      fontSize: isActive ? "18px" : "16px",
+      display: "block",
+      color: isActive ? "pink" : "white",
+      fontWeight: isActive ? "bold" : "normal",
+      marginRight: "10px",
+      marginLeft: "10px",
+    };
+  };
   return (
     <AppBar position="static">
       <Container
@@ -105,10 +119,8 @@ function IMSNavbar(props) {
               }}
             >
               {pages.map((page) => (
-                <Link to={page} style={{ textDecoration: "none" }}>
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
+                <Link to={page} onClick={handleCloseNavMenu}>
+                  <Button key={page} onClick={handleCloseNavMenu}></Button>
                 </Link>
               ))}
             </Menu>
@@ -136,8 +148,12 @@ function IMSNavbar(props) {
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Link to={page} style={{ textDecoration: "none" }}>
-                <Button
+              <NavLink
+                to={page}
+                style={navLinkStyles}
+                onClick={handleCloseNavMenu}
+              >
+                {/* <Button
                   key={page}
                   onClick={handleCloseNavMenu}
                   sx={{
@@ -148,8 +164,9 @@ function IMSNavbar(props) {
                   }}
                 >
                   {page}
-                </Button>
-              </Link>
+                </Button> */}
+                {page}
+              </NavLink>
             ))}
           </Box>
           {/* sx={{backgroundColor:'indigo' ,marginRight:'10px'}} */}

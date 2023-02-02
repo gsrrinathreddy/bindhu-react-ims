@@ -18,6 +18,8 @@ import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
 import Logout from "./pages/Logout";
 import Account from "./pages/Account";
+import Deliverypage from "./pages/Deliverypage";
+import Pagenotfound from "./pages/Pagenotfound";
 function App() {
   let p = ["Cakes", "Icecreams", "Chocolates", "Flowers", "Gifts"];
   let s = ["Profile", "Account", "Dashboard", "Logout"];
@@ -41,6 +43,8 @@ function App() {
           <Route path="/Account" element={<Account />}></Route>
           <Route path="/Dashboard" element={<Dashboard />}></Route>
           <Route path="/Logout" element={<Logout />}></Route>
+          <Route path="/Delivery" element={<Deliverypage />}></Route>
+          <Route path="/*" element={<Pagenotfound />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
