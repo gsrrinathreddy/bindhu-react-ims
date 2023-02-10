@@ -1,4 +1,4 @@
-import { ordered, restocked } from "../cakeSlice";
+import { ordered, restocked, wished } from "../cakeSlice";
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import flowercake from "../../../Assets/cake1.jpg";
@@ -209,6 +209,7 @@ export default function CakeView() {
                 sellingstatus={item.sellingstatus}
                 ordername={ordername}
                 order={ordered}
+                addfav={wished}
               ></IMSCard>
             </Grid>
           );

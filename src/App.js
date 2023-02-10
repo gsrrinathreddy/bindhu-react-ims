@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Cakes from "./pages/Cakes";
 import Icecreams from "./pages/Icecreams";
 import Landingpage from "./pages/Landingpage";
+import Favoritepage from "./pages/Favoritepage";
 
 import Flowers from "./pages/Flowers";
 import Gifts from "./pages/Gifts";
@@ -16,12 +17,26 @@ import Chocolates from "./pages/Chocolates";
 import Cartpage from "./pages/Cartpage";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
-import Logout from "./pages/Logout";
+import Login from "./pages/Login";
 import Account from "./pages/Account";
 import Deliverypage from "./pages/Deliverypage";
 import Pagenotfound from "./pages/Pagenotfound";
+import Signinpage from "./pages/Signinpage";
+import Checkout from "./pages/Checkout";
+import Signup from "./pages/Signup";
+import Users from "./pages/Users";
+import Products from "./pages/Products";
+
 function App() {
-  let p = ["Cakes", "Icecreams", "Chocolates", "Flowers", "Gifts"];
+  let p = [
+    "Cakes",
+    "Icecreams",
+    "Chocolates",
+    "Flowers",
+    "Gifts",
+    "Users",
+    "Products",
+  ];
   let s = ["Profile", "Account", "Dashboard", "Logout"];
   let noOfCakes = useSelector((state) => state.cake.numOfCakes);
   let ordercakes = useSelector((state) => state.cake.ordercakes);
@@ -42,9 +57,16 @@ function App() {
           <Route path="/Profile" element={<Profile />}></Route>
           <Route path="/Account" element={<Account />}></Route>
           <Route path="/Dashboard" element={<Dashboard />}></Route>
-          <Route path="/Logout" element={<Logout />}></Route>
+          <Route path="/Login" element={<Login />}></Route>
           <Route path="/Delivery" element={<Deliverypage />}></Route>
           <Route path="/*" element={<Pagenotfound />}></Route>
+          <Route path="/Signinpage" element={<Signinpage />}></Route>
+          <Route path="/Checkout" element={<Checkout />}></Route>
+          <Route path="/Signup" element={<Signup />}></Route>
+          <Route path="/Favoritepage" element={<Favoritepage />}></Route>
+          <Route path="/Users" element={<Users />}></Route>
+          <Route path="/Products" element={<Products />}></Route>
+          <Route path="/"></Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,4 +1,6 @@
 import { Typography, Grid, Button } from "@mui/material";
+import CardMedia from "@mui/material/CardMedia";
+import Card from "@mui/material/Card";
 import { Box } from "@mui/system";
 //import { iteratorSymbol } from "immer/dist/internal";
 import { useSelector } from "react-redux";
@@ -15,6 +17,26 @@ export default function Cart() {
         <Grid container>
           <Grid md={2}>
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+              Item
+            </Typography>
+            {cartList.map((item) => {
+              return (
+                <Typography>
+                  <Card
+                    sx={{
+                      width: "50px",
+                      marginLeft: "40px",
+                      marginRight: "40px",
+                    }}
+                  >
+                    <CardMedia component="img" height="80" image={item.photo} />
+                  </Card>
+                </Typography>
+              );
+            })}
+          </Grid>
+          <Grid md={2}>
+            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
               name
             </Typography>
             {cartList.map((item) => {
@@ -23,7 +45,7 @@ export default function Cart() {
           </Grid>
           <Grid md={2}>
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              Qty{" "}
+              Qty
             </Typography>
             {cartList.map((item) => {
               return <Typography>{item.qty} </Typography>;
@@ -31,7 +53,6 @@ export default function Cart() {
           </Grid>
           <Grid md={2}>
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              {" "}
               ActualPrice
             </Typography>
             {cartList.map((item) => {
@@ -40,7 +61,6 @@ export default function Cart() {
           </Grid>
           <Grid md={2}>
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              {" "}
               DiscountPrice
             </Typography>
             {cartList.map((item) => {
@@ -71,29 +91,9 @@ export default function Cart() {
             Go back to shopping
           </Button>
           <br></br>
-          <Button onClick={() => navigate("/Delivery")}>Place Order</Button>
+          <Button onClick={() => navigate("/Checkout")}>Place Order</Button>
         </Grid>
       </Box>
     </>
   );
 }
-
-// import { useSelector } from "react-redux"
-
-// export default function Cartpage(){
-//     let CakesOrder=useSelector((state)=>state.cake.ordercakes);
-//     let chocos=useSelector((state)=>state.chocolate.orderChocolates)
-//     let ice=useSelector((state)=>state.icecream.ordericecream);
-//     let gift=useSelector((state)=>state.gift.orderGift);
-//     return(
-//         <>
-//         <br/>
-//         <h3>Number Of Cakes :{CakesOrder}</h3>
-//         <h3>Number of IceCreams:{ice}</h3>
-//         <h3>Number of Chocolates :{chocos}</h3>
-//         <h3>Number of Gifts :{gift}</h3>
-
-//         </>
-
-//     )
-// }

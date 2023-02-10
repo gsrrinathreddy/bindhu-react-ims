@@ -5,14 +5,9 @@ import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import FacebookIcon from "@mui/icons-material/Facebook";
 import IMSCart from "../IMSCart";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@mui/material";
@@ -24,6 +19,11 @@ import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import IMSChip from "../IMSChip";
 import IMSSnackbar from "../IMSSnackbar";
+import IMSSpeeddial from "../IMSSpeeddial";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -45,7 +45,7 @@ export default function IMSCard(props) {
   let actualPrice = props.actualPrice;
   let discountPrice = props.discountPrice;
   let rating = props.rating;
-  let sellingStatus = props.sellingstatus;
+  let sellingstatus = props.sellingstatus;
   let ordername = props.ordername;
   let color = "success";
   let colwarning = "warning";
@@ -53,9 +53,11 @@ export default function IMSCard(props) {
   let discountedPercentage = Math.floor((discount / actualPrice) * 100);
   let dpoff = discountedPercentage + "% off ";
   let orderPlaced = props.order;
+  let addfav = props.addfav;
 
   const [expanded, setExpanded] = React.useState(false);
   const [qty, setQty] = React.useState(0);
+  const [active, setActive] = React.useState();
 
   const StyledRating = styled(Rating)({
     "& .MuiRating-iconFilled": {
@@ -72,13 +74,33 @@ export default function IMSCard(props) {
 
   let params = {
     name: title,
+    photo: photo,
     actualPrice: actualPrice,
     discountPrice: discountPrice,
+
     qty: parseInt(qty),
+  };
+  let param = {
+    name: title,
+    photo: photo,
+    actualPrice: actualPrice,
+    discountPrice: discountPrice,
+    sellingstatus: sellingstatus,
+    rating: rating,
+    qty: parseInt(qty),
+  };
+  const actions = [
+    { icon: <WhatsAppIcon />, name: "WhatsApp" },
+    { icon: <FacebookIcon />, name: "Facebook" },
+    { icon: <InstagramIcon />, name: "Instagram" },
+  ];
+
+  const like = () => {
+    setActive(!active);
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, cursor: "pointer" }}>
       <CardHeader title={title} />
       <Card sx={{ width: "250px", marginLeft: "40px", marginRight: "40px" }}>
         <Box sx={{ position: "relative" }}>
@@ -94,7 +116,7 @@ export default function IMSCard(props) {
             }}
           >
             <Stack spacing={1}>
-              <IMSChip label={sellingStatus} color={color}></IMSChip>
+              <IMSChip label={sellingstatus} color={color}></IMSChip>
             </Stack>
             <Stack
               direction="row"
@@ -113,11 +135,14 @@ export default function IMSCard(props) {
           <h3>
             Offer Price:₹ {discountPrice} ({dpoff})
           </h3>
-          <br></br>
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <TextField
+          type="number"
+          InputProps={{
+            inputProps: { min: 0 },
+          }}
           id="outlined-basic"
           label="Quantity"
           variant="outlined"
@@ -125,31 +150,40 @@ export default function IMSCard(props) {
           onChange={(e) => setQty(e.currentTarget.value)}
         />
         <Box>
-          <Button onClick={() => dispatch(orderPlaced(params))}>
+          <Button
+            onClick={() => {
+              if (qty > 0) {
+                {
+                  handleExpandClick();
+                  dispatch(orderPlaced(params));
+                }
+              }
+            }}
+          >
             <IMSSnackbar
               abc={"Add"}
               message={qty + " " + title + "  items added"}
             ></IMSSnackbar>
           </Button>
         </Box>
-        <IMSCart Content={qty}></IMSCart>
-        <Button>
-          <ShareIcon />
-        </Button>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
+        <Box sx={{ width: 200, height: 250 }}>
+          <IMSSpeeddial share={actions}></IMSSpeeddial>
+        </Box>
+        <IconButton
+          aria-label="add to favorites"
+          onClick={() => {
+            {
+              dispatch(addfav(param));
+            }
+          }}
         >
-          <ExpandMoreIcon />
-        </ExpandMore>
+          <FavoriteIcon
+            onClick={like}
+            style={{ color: active ? "red" : "grey" }}
+          />
+        </IconButton>
+        <IMSCart Content={qty}></IMSCart>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Method:</Typography>
-        </CardContent>
-      </Collapse>
     </Card>
   );
 }

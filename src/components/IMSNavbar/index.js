@@ -16,11 +16,16 @@ import { Link } from "react-router-dom";
 import IMSCart from "../IMSCart";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import IMSAutocomplete from "../IMSAutocomplete";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 // const pages = ['Cakes','Icecreams','Chocolates','Flowers','Gifts'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function IMSNavbar(props) {
+  const navigate = useNavigate();
+
   const ord1 = useSelector((state) => state.cake.ordercakes);
   const ord2 = useSelector((state) => state.icecream.ordericecream);
   const ord3 = useSelector((state) => state.chocolate.orderChocolates);
@@ -169,13 +174,31 @@ function IMSNavbar(props) {
               </NavLink>
             ))}
           </Box>
-          {/* sx={{backgroundColor:'indigo' ,marginRight:'10px'}} */}
+          <IMSAutocomplete></IMSAutocomplete>
+
+          <Box>
+            <Button
+              color="inherit"
+              variant="text"
+              onClick={() => {
+                navigate("/Signinpage");
+              }}
+            >
+              Sign In
+            </Button>
+          </Box>
+          <Box sx={{ marginRight: "10px" }}>
+            <Link to="Favoritepage">
+              <FavoriteIcon></FavoriteIcon>
+            </Link>
+          </Box>
           <Box sx={{ marginRight: "10px" }}>
             <Link to="Cartpage">
               <IMSCart Content={sum}></IMSCart>
             </Link>
           </Box>
           <br></br>
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

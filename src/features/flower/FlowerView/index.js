@@ -11,7 +11,7 @@ import rose from "../../../Assets/rose.jpg";
 import gerberas from "../../../Assets/gerberas.jpg";
 import mixed from "../../../Assets/mixed.jpg";
 import mixrose from "../../../Assets/mixrose.jpg";
-import { ordered } from "../flowerSlice";
+import { ordered, wished } from "../flowerSlice";
 
 export default function FlowerView() {
   const FlowerList = [
@@ -118,6 +118,7 @@ export default function FlowerView() {
                   rating={item.rating}
                   ordername={ordername}
                   order={ordered}
+                  addfav={wished}
                 ></IMSCard>
               </Grid>
             );

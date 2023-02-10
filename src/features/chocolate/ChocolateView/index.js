@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import IMSCart from "../../../components/IMSCart";
-import { ordered, restocked } from "../chocolateSlice";
+import { ordered, restocked, wished } from "../chocolateSlice";
 
 import { Box } from "@mui/system";
 import { Grid } from "@mui/material";
@@ -142,6 +142,7 @@ export default function ChocolateView() {
                     ordername={ordername}
                     sellingstatus={item.sellingstatus}
                     order={ordered}
+                    addfav={wished}
                   ></IMSCard>
                 </Grid>
               </>
@@ -152,22 +153,3 @@ export default function ChocolateView() {
     </>
   );
 }
-
-// const dispatch=useDispatch();
-// const numOfChocolates=useSelector((state)=>state.chocolate.numOfChocolates);
-// const choco1=1
-// return(<>
-
-// <h3>Number Of Chocolates: {(numOfChocolates<choco1)?'Out Of Stock':numOfChocolates}</h3>
-
-// <br/>
-// <Button onClick={()=>{
-//     dispatch(ordered(1))
-// }}
-// >
-//     ChocolateOrder
-// </Button>
-
-// <Button onClick={()=>{
-//     dispatch(restocked(1))
-// }}>ChocolateRestocked</Button></>)

@@ -17,7 +17,7 @@ export default function Profile() {
             required
             id="outlined-required"
             label="UserName"
-            defaultValue="abc"
+            // defaultValue="abc"
           />
           <br />
           <TextField
@@ -29,19 +29,27 @@ export default function Profile() {
           <br />
 
           <TextField
+            required
+            id="outlined-required"
+            label="PhoneNumber"
+            // defaultValue="abc"
+          />
+
+          <br />
+          <TextField
+            required
+            id="outlined-required"
+            label="Email"
+            // defaultValue="abc@email.com"
+          />
+          <br />
+          <TextField
             id="outlined-number"
             label="Age"
             type="number"
             InputLabelProps={{
               shrink: true,
             }}
-          />
-          <br />
-          <TextField
-            required
-            id="outlined-required"
-            label="Email"
-            defaultValue="abc"
           />
         </div>
       </Box>

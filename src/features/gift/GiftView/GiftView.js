@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 
-import { ordered, restocked } from "../GiftSlice";
+import { ordered, restocked, wished } from "../GiftSlice";
 import { Grid } from "@mui/material";
 import IMSCard from "../../../components/IMSCard";
 import bullockcart from "../../../Assets/bullockcart.jpg";
@@ -118,6 +118,7 @@ export default function GiftView() {
                   sellingstatus={item.sellingstatus}
                   ordername={ordername}
                   order={ordered}
+                  addfav={wished}
                 ></IMSCard>
               </Grid>
             );
